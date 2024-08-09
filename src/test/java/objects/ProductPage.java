@@ -109,7 +109,7 @@ public class ProductPage extends PageObject{
                 setProductName(getText(productTitleProductPage));
                 click(addToCartButtonProductPage);
                 if(isElementExists(protectionPlanPopupCancelButton)){
-                    waitUntilClickable(protectionPlanPopupCancelButton).click();
+                    retryClick(protectionPlanPopupCancelButton,5);
                 }
             }
             else{
