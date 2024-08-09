@@ -65,7 +65,7 @@ Once execution completed for local, the reports can be found in the `target/exte
 
 ## GitHub Actions
 
-To run github action visit the action tab and run the automation action. Add value for email and browser and run the action.
+[To run github action visit the action tab and run the automation action](https://github.com/barat1999/amazon-automation/actions/workflows/cicd.yaml). Add value for email and browser and run the action.
 After the action is completed an email would be sent to the email id shared during the previous step which will have the link to the report.
 The report is hosted using github actions
 
