@@ -46,7 +46,7 @@ public abstract class PageObject {
             ((WebElement) locator).click();
         }
     } catch (Exception e) {
-        Logger.warn("Error while trying to click on the element: " + locator + ". Exception: " + e.getMessage());
+        Logger.warn("Error while trying to click on the element: " + locator + ". Exception: " + e.getMessage().split("Build info")[0]);
     }
 }
 
@@ -60,7 +60,7 @@ public abstract class PageObject {
             jsExecutor.executeScript("arguments[0].click();", locator);
         }
     } catch (Exception e) {
-        Logger.warn("Error while trying to click on the element using JavaScript: " + locator + ". Exception: " + e.getMessage());
+        Logger.warn("Error while trying to click on the element using JavaScript: " + locator + ". Exception: " + e.getMessage().split("Build info")[0]);
     }
 }
 
