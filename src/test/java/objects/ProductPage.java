@@ -106,7 +106,7 @@ public class ProductPage extends PageObject{
             if(isElementExists(addToCartButtonProductPage)){
                 screenshotManager.takeScreenshot(driver);
                 setProductName(getText(productTitleProductPage));
-                click(addToCartButtonProductPage);
+                clickJs(addToCartButtonProductPage);
             }
             else{
                 //else logic added to choose the next most reviewed title, if add to cart option NA due to location restrictions
