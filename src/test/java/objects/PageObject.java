@@ -238,8 +238,8 @@ public abstract class PageObject {
         wait.until(ExpectedConditions.urlContains(url));
     }
 
-    public String getCurrentPageUrl(Webdriver webDriver) {
-        return webDriver.getCurrentUrl();
+    public String getCurrentPageUrl(WebDriver driver) {
+        return driver.getCurrentUrl();
     }
 
     public <T> WebElement waitUntilVisible(T locator) {
