@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Amazon Web Automation Testcases" verbose="1" data-provider-thread-count="20">
+    <listeners>
+        <!-- RetryListener to retry failed tests -->
+        <listener class-name="utils.RetryListener" />
+        <!-- TestListener to perform actions before and after test execution -->
+        <listener class-name="utils.TestListener" />
+    </listeners>
+
+    <test name="Amazon Tests" verbose="2">
+        <classes>
+            <class name="testcases.AmazonTest"/>
+        </classes>
+    </test>
+</suite>

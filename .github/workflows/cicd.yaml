@@ -1,0 +1,64 @@
+name: automation
+
+on:
+  workflow_dispatch:
+    inputs:
+      email:
+        type: string
+        description: Who to send the email to?
+        required: true
+      browser:
+        type: choice
+        description: Which browser to use?
+        options:
+          - Firefox
+        required: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    env:
+      GIT_COMMIT_SHA: ${{ github.sha }}
+      DOCKER_IMAGE_BUILD_VERSION: latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build
+        run: |
+          docker build -t toku/amazon-automation --build-arg BROWSER=${{ github.event.inputs.browser }} .
+      - name: Run
+        run: |
+          docker run -t toku/amazon-automation
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3.12.0
+        with:
+          server_address: smtp.gmail.com
+          # Server port, default 25:
+          server_port: 465
+          # Optional whether this connection use TLS (default is true if server_port is 465)
+          secure: true
+          # Optional (recommended) mail server username:
+          username: ${{secrets.MAIL_USERNAME}}
+          # Optional (recommended) mail server password:
+          password: ${{secrets.MAIL_PASSWORD}}
+          # Required mail subject:
+          subject: Github Actions job result
+          # Required recipients email address:
+          to: ${{github.event.inputs.email}}
+          # attachment file path:
+          attachments: /usr/app/target/extent-reports/index.html
+          # Optional content type (default is text/plain):
+          body: Automation workflow for ${{github.repository}} completed successfully!
+
+  # notify_status_on_slack:
+  #   if: always()
+  #   needs: ci
+  #   name: Notify build job status on Slack
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Slack Notification
+  #       uses: rtCamp/action-slack-notify@v2
+  #       env:
+  #         SLACK_WEBHOOK: ${{ secrets.FRONTEND_BUILDS_SLACK_WEBHOOK }}
+  #         SLACK_FOOTER: "Workflow: *${{ github.workflow }}*, Job: *ci*, Status: *${{ needs.ci.result }}*"
+  #         SLACK_COLOR: ${{ needs.ci.result }}
