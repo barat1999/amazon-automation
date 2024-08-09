@@ -61,17 +61,13 @@ mvn clean test -DBrowser="Chrome" -DBrowserMode="nonHeadless"
 
 ## Test Report
 
-Once execution completed, the reports can be found in the `target/extent-reports/index.html` file.
+Once execution completed for local, the reports can be found in the `target/extent-reports/index.html` file.
 
 ## GitHub Actions
 
-To run the tests in CI/CD, use the following
-project: https://coda.teamcity.com/buildConfiguration/AutomationTesting_FraudApiAutomation_Test
-
-1. Click `Run` to execute the tests
-2. Enter the necessary parameters in the `Parameters` field 
-3. Click `Run Build` to start the tests
-4. Once the tests are completed, the test report can be found under the `Test Report` or `Artifacts` tab
+To run github action visit the action tab and run the automation action. Add value for email and browser and run the action.
+After the action is completed an email would be sent to the email id shared during the previous step which will have the link to the report.
+The report is hosted using github actions
 
 ## Selenium, TestNG, and Maven Overview
 This project utilizes Selenium for browser automation, TestNG for test case management, and Maven for build and dependency management. Below is a brief overview:
