@@ -38,18 +38,15 @@ jobs:
       - name: Copy artifact
         if: always()
         run: |
-          mkdir ./reports
-          docker cp amazon-automation:/usr/app/target/extent-reports /reports
+          sudo mkdir ${{ github.workspace }}/reports
+          docker cp amazon-automation:/usr/app/target/extent-reports ${{ github.workspace }}/reports
       - name: Setup Pages
-        if: always()
         uses: actions/configure-pages@v5
       - name: Upload artifact
-        if: always()
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./reports
+          path: ${{ github.workspace }}/reports
       - name: Deploy to GitHub Pages
-        if: always()
         id: deployment
         uses: actions/deploy-pages@v4
       - name: Send email

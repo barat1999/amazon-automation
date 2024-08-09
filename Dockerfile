@@ -20,4 +20,8 @@ ENV JAVA_HOME=/usr/local/openjdk-11
 ENV MAVEN_HOME=/usr/share/maven
 ENV PATH="${JAVA_HOME}/bin:${MAVEN_HOME}/bin:${PATH}"
 
+# Switch to non-root user
+USER seluser
+
+
 CMD [ "/bin/sh", "/usr/app/Task.sh",  "Headless" ]
