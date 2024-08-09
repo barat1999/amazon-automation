@@ -48,20 +48,6 @@ jobs:
           # Required recipients email address:
           to: ${{github.event.inputs.email}}
           # attachment file path:
-          attachments: /usr/app/target/extent-reports/index.html
+          attachments: ./target/extent-reports/index.html
           # Optional content type (default is text/plain):
           body: Automation workflow for ${{github.repository}} completed successfully!
-
-  # notify_status_on_slack:
-  #   if: always()
-  #   needs: ci
-  #   name: Notify build job status on Slack
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Slack Notification
-  #       uses: rtCamp/action-slack-notify@v2
-  #       env:
-  #         SLACK_WEBHOOK: ${{ secrets.FRONTEND_BUILDS_SLACK_WEBHOOK }}
-  #         SLACK_FOOTER: "Workflow: *${{ github.workflow }}*, Job: *ci*, Status: *${{ needs.ci.result }}*"
-  #         SLACK_COLOR: ${{ needs.ci.result }}
