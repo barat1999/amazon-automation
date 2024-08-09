@@ -1,18 +1,23 @@
 name: automation
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       email:
         type: string
         description: Who to send the email to?
         required: true
+        default: gopibaratnadar00@gmail.com
       browser:
         type: choice
         description: Which browser to use?
         options:
           - Firefox
         required: true
+        default: Firefox
 
 jobs:
   ci:
