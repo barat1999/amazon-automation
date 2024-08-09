@@ -36,6 +36,7 @@ jobs:
         run: |
           docker run --name amazon-automation -e BROWSER=${{ github.event.inputs.browser }} -t toku/amazon-automation
       - name: Copy artifact
+        if: always()
         run: |
           mkdir -p ./reports
           docker cp amazon-automation:/usr/app/target/extent-reports /reports
