@@ -39,7 +39,7 @@ public class ProductPage extends PageObject{
     By reviewCountFieldResultsPage = By.xpath("//span[@class='a-size-base s-underline-text']");
     By addToCartButtonProductPage = By.xpath("//input[@id='add-to-cart-button']");
     By productTitleProductPage = By.xpath("//span[@id='productTitle']");
-    By protectionPlanPopupCancelButton = By.xpath("//span[@id='attachSiNoCoverage-announce']");
+    By protectionPlanPopupCancelButton = By.xpath("//div[@id='attach-warranty-pane' and not(@class='a-section aok-hidden')]//span[@id='attachSiNoCoverage']");
 
     // Method to extract numbers from elements
     public void extractNumbers() {
@@ -109,7 +109,7 @@ public class ProductPage extends PageObject{
                 setProductName(getText(productTitleProductPage));
                 click(addToCartButtonProductPage);
                 if(isElementExists(protectionPlanPopupCancelButton)){
-                    retryClick(protectionPlanPopupCancelButton,5);
+                    waitUntilClickable(protectionPlanPopupCancelButton).click();
                 }
             }
             else{
