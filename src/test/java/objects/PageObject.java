@@ -74,7 +74,7 @@ public abstract class PageObject {
             attempts++;
             Logger.info("Attempt " + attempts + " failed for element click for " + locator);
             if (attempts >= maxRetries) {
-                Logger.info("Max retry attempts reached for element: " + locator + ");
+                Logger.info("Max retry attempts reached for element: " + locator);
             }
             Thread.sleep(2000); //to wait before every retry
         }
