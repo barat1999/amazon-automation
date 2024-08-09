@@ -1,9 +1,6 @@
 name: automation
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       email:
