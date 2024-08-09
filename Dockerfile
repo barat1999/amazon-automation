@@ -9,11 +9,6 @@ WORKDIR /usr/app
 COPY . .
 
 FROM selenium/standalone-firefox:128.0
-WORKDIR /usr/app
-COPY . .
-FROM selenium/standalone-chrome:127.0.6533.72
-
-WORKDIR /usr/app
 
 # Copy the JDK and Maven from the build image
 COPY --from=build --chown=seluser:seluser /usr/share/maven /usr/share/maven
