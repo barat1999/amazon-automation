@@ -46,7 +46,7 @@ jobs:
         if: always()
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ github.workspace }}
+          path: ${{ github.workspace }}/index.html
       - name: Deploy to GitHub Pages
         if: always()
         id: deployment
