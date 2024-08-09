@@ -38,7 +38,7 @@ jobs:
       - name: Copy artifact
         if: always()
         run: |
-          docker cp amazon-automation:/usr/app/target/extent-reports ${{ github.workspace }}
+          docker cp amazon-automation:/usr/app/target/extent-reports/index.html ${{ github.workspace }}
       - name: Setup Pages
         if: always()
         uses: actions/configure-pages@v5
