@@ -25,7 +25,7 @@ COPY --from=build --chown=seluser:seluser /usr/app /usr/app
 ENV JAVA_HOME=/usr/local/openjdk-11
 ENV MAVEN_HOME=/usr/share/maven
 ENV PATH="${JAVA_HOME}/bin:${MAVEN_HOME}/bin:${PATH}"
-ENV BROWSER=${BROWSER}
+ENV BROWSER $BROWSER
 
 # Switch to non-root user
 USER seluser
