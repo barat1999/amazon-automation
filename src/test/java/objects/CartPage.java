@@ -27,7 +27,9 @@ public class CartPage extends PageObject{
             ProductPage ProductPage = new ProductPage(driver);
             clickJs(goToCartButton);
             waitUntilPresent(productNameInCart);
-            if(isElementExists(By.xpath("//img[contains(@alt,'" + ProductPage.getProductName() + "')]"))){
+            String currentUrl = getCurrentPageUrl(driver);
+            Logger.info("Current Page Url - " + currentUrl);
+            if(currentUrl.contains("nav_cart") && (isElementExists(By.xpath("//img[contains(@alt,'" + ProductPage.getProductName() + "')]")))){
                 return true;
             }
             else {
