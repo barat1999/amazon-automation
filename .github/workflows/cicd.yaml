@@ -38,7 +38,7 @@ jobs:
       - name: Copy artifact
         if: always()
         run: |
-          mkdir -p ./reports
+          mkdir ./reports
           docker cp amazon-automation:/usr/app/target/extent-reports /reports
       - name: Setup Pages
         if: always()
