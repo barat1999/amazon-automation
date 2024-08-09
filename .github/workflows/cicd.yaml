@@ -34,7 +34,11 @@ jobs:
           docker build -t toku/amazon-automation .
       - name: Run
         run: |
-          docker run -e BROWSER=${{ github.event.inputs.browser }} -t toku/amazon-automation
+          docker run --name amazon-automation -e BROWSER=${{ github.event.inputs.browser }} -t toku/amazon-automation
+      - name: Copy artifact
+        run: |
+          mkdir -p ./reports
+          docker cp amazon-automation:/usr/app/target/extent-reports /reports
       - name: Setup Pages
         if: always()
         uses: actions/configure-pages@v5
@@ -42,7 +46,7 @@ jobs:
         if: always()
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./usr/app/target/extent-reports
+          path: ./reports
       - name: Deploy to GitHub Pages
         if: always()
         id: deployment
