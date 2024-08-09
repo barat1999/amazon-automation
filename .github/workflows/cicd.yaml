@@ -30,6 +30,15 @@ jobs:
       - name: Run
         run: |
           docker run -e BROWSER=${{ github.event.inputs.browser }} -t toku/amazon-automation
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: target/extent-reports
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
       - name: Send email
         if: always()
         uses: dawidd6/action-send-mail@v3.12.0
@@ -52,4 +61,4 @@ jobs:
           # attachment file path:
           attachments: /usr/app/target/extent-reports/index.html
           # Optional content type (default is text/plain):
-          body: Automation workflow for ${{github.repository}} completed successfully!
+          body: Automation workflow for ${{github.repository}} completed successfully! View results at ${{ steps.deployment.outputs.page_url }}
