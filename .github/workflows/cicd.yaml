@@ -50,6 +50,6 @@ jobs:
           # Required recipients email address:
           to: ${{github.event.inputs.email}}
           # attachment file path:
-          attachments: ./target/extent-reports/index.html
+          attachments: /usr/app/target/extent-reports/index.html
           # Optional content type (default is text/plain):
           body: Automation workflow for ${{github.repository}} completed successfully!
