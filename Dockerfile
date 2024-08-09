@@ -1,5 +1,4 @@
 
-ARG BROWSER=Firefox
 
 # Start with the Maven OpenJDK image
 FROM maven:3.8.6-openjdk-11 AS build
@@ -25,12 +24,9 @@ COPY --from=build --chown=seluser:seluser /usr/app /usr/app
 ENV JAVA_HOME=/usr/local/openjdk-11
 ENV MAVEN_HOME=/usr/share/maven
 ENV PATH="${JAVA_HOME}/bin:${MAVEN_HOME}/bin:${PATH}"
-ENV BROWSER $BROWSER
-RUN echo $BROWSER
-RUN echo ${BROWSER}
-RUN echo abcd
-RUN echo "querty"
+
 # Switch to non-root user
 USER seluser
 
-CMD ["mvn", "clean", "test", "-DBrowser=$BROWSER", "-DBrowserMode=Headless", "-DsuiteXmlFile=/usr/app/src/test/resources/Amazon.xml"]
+
+CMD [ "/bin/sh", "/usr/app/Task.sh",  "Headless" ]
