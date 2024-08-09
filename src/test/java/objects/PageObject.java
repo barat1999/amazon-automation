@@ -38,22 +38,31 @@ public abstract class PageObject {
         }
     }
 
-    public <T> void click(T locator) throws Exception {
+    public <T> void click(T locator) {
+    try {
         if (locator instanceof By) {
             waitUntilClickable((By) locator).click();
         } else if (locator instanceof WebElement) {
             ((WebElement) locator).click();
         }
+    } catch (Exception e) {
+        Logger.warn("Error while trying to click on the element: " + locator + ". Exception: " + e.getMessage());
     }
+}
+
 
     public <T> void clickJs(T locator) {
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+    JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+    try {
         if (locator instanceof By) {
             jsExecutor.executeScript("arguments[0].click();", driver.findElement((By) locator));
         } else if (locator instanceof WebElement) {
             jsExecutor.executeScript("arguments[0].click();", locator);
         }
+    } catch (Exception e) {
+        Logger.warn("Error while trying to click on the element using JavaScript: " + locator + ". Exception: " + e.getMessage());
     }
+}
 
     public void acceptAlert() {
         waitUntilAlertIsPresent().accept();
