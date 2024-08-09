@@ -39,6 +39,7 @@ public class ProductPage extends PageObject{
     By reviewCountFieldResultsPage = By.xpath("//span[@class='a-size-base s-underline-text']");
     By addToCartButtonProductPage = By.xpath("//input[@id='add-to-cart-button']");
     By productTitleProductPage = By.xpath("//span[@id='productTitle']");
+    By protectionPlanPopupCancelButton = By.xpath("//span[@id='attachSiNoCoverage-announce']");
 
     // Method to extract numbers from elements
     public void extractNumbers() {
@@ -107,6 +108,9 @@ public class ProductPage extends PageObject{
                 screenshotManager.takeScreenshot(driver);
                 setProductName(getText(productTitleProductPage));
                 click(addToCartButtonProductPage);
+                if(isElementExists(protectionPlanPopupCancelButton)){
+                    click(protectionPlanPopupCancelButton);
+                }
             }
             else{
                 //else logic added to choose the next most reviewed title, if add to cart option NA due to location restrictions
