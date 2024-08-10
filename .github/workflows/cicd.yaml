@@ -5,7 +5,7 @@ on:
     inputs:
       email:
         type: string
-        description: Who to send the email to?
+        description: Who to send the report in email to?
         required: true
         default: gopibaratnadar00@gmail.com
       browser:
