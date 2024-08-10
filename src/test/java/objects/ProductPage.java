@@ -110,6 +110,7 @@ public class ProductPage extends PageObject{
                 click(addToCartButtonProductPage);
                 if(isElementExists(protectionPlanPopupCancelButton)){
                     waitUntilClickable(protectionPlanPopupCancelButton).click(); 
+                    Thread.sleep(2500);
                 }
             }
             else{
