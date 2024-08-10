@@ -25,7 +25,7 @@ public class CartPage extends PageObject{
     public boolean verifyProductInCart() throws Exception {
         try{
             ProductPage ProductPage = new ProductPage(driver);
-            retryClick(goToCartButton);
+            retryClick(goToCartButton , 5);
             waitUntilPresent(productNameInCart);
             String currentUrl = getCurrentPageUrl(driver);
             Logger.info("Current Page Url - " + currentUrl);
