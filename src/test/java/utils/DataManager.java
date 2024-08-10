@@ -10,7 +10,7 @@ public class DataManager {
     public static String DOWNLOAD_PATH = System.getProperty("user.dir") + "/target/test-data/download";
     public static final String BROWSER = System.getProperty("Browser");
     public static final String BROWSER_MODE = System.getProperty("BrowserMode");
-    public static final String BASE_URL = PropertiesManager.getProperty("BaseURL");
+    public static final String BASE_URL = PropertiesManager.getProperty("BaseURL");//BaseURL fetched from config.properties file
 
     private static final Map<ThreadLocal<String>, String> properties = new HashMap<ThreadLocal<String>, String>();
 
